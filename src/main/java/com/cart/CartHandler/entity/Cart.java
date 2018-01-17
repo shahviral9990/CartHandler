@@ -1,24 +1,21 @@
-package com.cart.CartHandler.dto;
+package com.cart.CartHandler.entity;
 
-import com.cart.CartHandler.entity.CartIdentity;
+import org.hibernate.annotations.NaturalId;
 
-import javax.persistence.JoinColumn;
-import java.util.Map;
+import javax.persistence.*;
 
-public class CartDTO {
+@Entity
+@Table(name=Cart.TABLE_NAME)
+public class Cart {
     private static final Integer MAX_LIMIT=4;
     //email
-     private CartIdentity cartIdentity;
-    private String prodId;
+    @EmbeddedId
+   private CartIdentity cartIdentity;
     private int price;
     private String sellerId;
     private int quantity;
     private String productName;
     private String sellerName;
-
-
-
-    private String productImage;
 
     public String getProductImage() {
         return productImage;
@@ -28,9 +25,8 @@ public class CartDTO {
         this.productImage = productImage;
     }
 
-    public static Integer getMaxLimit() {
-        return MAX_LIMIT;
-    }
+    private String productImage;
+
 
     public CartIdentity getCartIdentity() {
         return cartIdentity;
@@ -40,13 +36,17 @@ public class CartDTO {
         this.cartIdentity = cartIdentity;
     }
 
-    public String getProdId() {
-        return prodId;
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
-    public void setProdId(String prodId) {
-        this.prodId = prodId;
+    public static final String TABLE_NAME="cart_db";
+    public static Integer getMaxLimit() {
+        return MAX_LIMIT;
     }
+
+
 
     public int getPrice() {
         return price;
@@ -72,7 +72,12 @@ public class CartDTO {
         this.quantity = quantity;
     }
 
+    public static String getTableName() {
+        return TABLE_NAME;
+    }
+
     public String getProductName() {
+
         return productName;
     }
 
