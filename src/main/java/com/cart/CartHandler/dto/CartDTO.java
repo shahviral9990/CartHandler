@@ -9,7 +9,6 @@ public class CartDTO {
     private static final Integer MAX_LIMIT=4;
     //email
      private CartIdentity cartIdentity;
-    private String prodId;
     private int price;
     private String sellerId;
     private int quantity;
@@ -40,13 +39,6 @@ public class CartDTO {
         this.cartIdentity = cartIdentity;
     }
 
-    public String getProdId() {
-        return prodId;
-    }
-
-    public void setProdId(String prodId) {
-        this.prodId = prodId;
-    }
 
     public int getPrice() {
         return price;
